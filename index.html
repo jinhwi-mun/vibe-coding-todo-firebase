@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>to do</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Outfit:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="main-header">
+        <div class="header-row">
+          <div class="header-brand">
+            <h1 class="script-title">to do</h1>
+            <p class="tagline">today, next, soon, later</p>
+          </div>
+
+          <section class="dday-panel" data-quadrant="dday">
+            <h2 class="dday-title">D-DAY</h2>
+            <ul class="dday-list" aria-label="D-day countdowns"></ul>
+            <form class="dday-form" autocomplete="off">
+              <input
+                type="text"
+                class="dday-text"
+                name="text"
+                placeholder="event…"
+                required
+              />
+              <div class="dday-form-row">
+                <label class="date-field">
+                  <span class="date-placeholder">yyyy-mm-dd</span>
+                  <input type="date" class="dday-date" name="date" required />
+                </label>
+                <button type="submit" class="save-btn dday-save-btn">save</button>
+              </div>
+            </form>
+          </section>
+        </div>
+      </header>
+
+      <div class="matrix">
+        <section class="quadrant" data-quadrant="urgent-important">
+          <h2 class="quadrant-title">TODAY</h2>
+          <p class="quadrant-sub">
+            <span class="word-urgent">urgent</span> &amp;
+            <span class="word-important">important</span>
+          </p>
+          <ul class="task-list" aria-label="Today tasks"></ul>
+          <form class="add-form" autocomplete="off">
+            <button type="submit" class="add-btn" aria-label="Add task">+</button>
+            <input type="text" class="add-input" placeholder="add a task…" />
+            <button type="submit" class="save-btn">save</button>
+          </form>
+        </section>
+
+        <section class="quadrant" data-quadrant="important-not-urgent">
+          <h2 class="quadrant-title">NEXT</h2>
+          <p class="quadrant-sub">
+            <span class="word-important">important</span>
+          </p>
+          <ul class="task-list" aria-label="Next tasks"></ul>
+          <form class="add-form" autocomplete="off">
+            <button type="submit" class="add-btn" aria-label="Add task">+</button>
+            <input type="text" class="add-input" placeholder="add a task…" />
+            <button type="submit" class="save-btn">save</button>
+          </form>
+        </section>
+
+        <section class="quadrant" data-quadrant="urgent-not-important">
+          <h2 class="quadrant-title">SOON</h2>
+          <p class="quadrant-sub">
+            <span class="word-urgent">urgent</span> &amp; not
+            <span class="word-important">important</span>
+          </p>
+          <ul class="task-list" aria-label="Soon tasks"></ul>
+          <form class="add-form" autocomplete="off">
+            <button type="submit" class="add-btn" aria-label="Add task">+</button>
+            <input type="text" class="add-input" placeholder="add a task…" />
+            <button type="submit" class="save-btn">save</button>
+          </form>
+        </section>
+
+        <section class="quadrant" data-quadrant="future">
+          <h2 class="quadrant-title">LATER</h2>
+          <p class="quadrant-sub">
+            not <span class="word-urgent">urgent</span> &amp; not
+            <span class="word-important">important</span>
+          </p>
+          <ul class="task-list" aria-label="Later tasks"></ul>
+          <form class="add-form" autocomplete="off">
+            <button type="submit" class="add-btn" aria-label="Add task">+</button>
+            <input type="text" class="add-input" placeholder="add a task…" />
+            <button type="submit" class="save-btn">save</button>
+          </form>
+        </section>
+      </div>
+    </div>
+
+    <template id="task-item-template">
+      <li class="task-item">
+        <label class="checkbox-wrap">
+          <input type="checkbox" class="task-check" />
+          <span class="checkbox-box" aria-hidden="true"></span>
+        </label>
+        <span class="task-text" tabindex="0"></span>
+        <input type="text" class="task-edit" hidden />
+        <div class="task-actions">
+          <button type="button" class="action-btn edit-btn" title="Edit">edit</button>
+          <button type="button" class="action-btn delete-btn" title="Delete">delete</button>
+        </div>
+      </li>
+    </template>
+
+    <template id="dday-item-template">
+      <li class="dday-item">
+        <div class="dday-item-main">
+          <span class="dday-badge"></span>
+          <span class="dday-item-text"></span>
+        </div>
+        <div class="dday-item-edit">
+          <input type="text" class="dday-edit-text" />
+          <label class="date-field">
+            <span class="date-placeholder">yyyy-mm-dd</span>
+            <input type="date" class="dday-edit-date" />
+          </label>
+        </div>
+        <div class="dday-actions">
+          <button type="button" class="action-btn edit-btn" title="Edit">edit</button>
+          <button type="button" class="action-btn delete-btn" title="Delete">delete</button>
+        </div>
+      </li>
+    </template>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

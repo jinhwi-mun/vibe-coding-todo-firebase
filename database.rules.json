@@ -1,0 +1,8 @@
+{
+  "rules": {
+    "tasks": {
+      ".read": true,
+      ".write": true
+    }
+  }
+}
