@@ -95,6 +95,7 @@ body {
   border: 1px solid var(--panel-border);
   border-radius: 4px;
   backdrop-filter: blur(8px);
+  overflow: hidden;
 }
 
 .plant-stage {
@@ -174,6 +175,8 @@ body {
   font-weight: 500;
   letter-spacing: 0.12em;
   color: var(--text);
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .goals-list {
@@ -596,22 +599,79 @@ body {
   }
 
   .header-row {
-    gap: 0.75rem;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.85rem;
+  }
+
+  .header-brand {
+    flex: none;
+    width: 100%;
+    text-align: center;
   }
 
   .header-widgets {
-    flex: 1 1 100%;
-    justify-content: stretch;
+    flex: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.65rem;
   }
 
   .garden-panel {
+    flex: none;
+    width: 100%;
     max-width: none;
-    flex: 1 1 auto;
+    gap: 0.55rem;
+    padding: 0.65rem 0.7rem;
+  }
+
+  .plant-stage {
+    width: 84px;
+  }
+
+  .plant-frame {
+    width: 76px;
+    height: 76px;
+  }
+
+  .plant-label {
+    font-size: 0.58rem;
+    max-width: 84px;
+  }
+
+  .goals-title {
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+  }
+
+  .goals-list {
+    max-height: 100px;
+  }
+
+  .goals-input {
+    font-size: 0.75rem;
+  }
+
+  .goal-item {
+    gap: 0.3rem;
+  }
+
+  .goal-text {
+    font-size: 0.75rem;
+  }
+
+  .goal-item .goal-delete {
+    opacity: 1;
+    font-size: 0.58rem;
   }
 
   .dday-panel {
-    flex: 0 0 min(180px, 40vw);
-    width: min(180px, 40vw);
+    flex: none;
+    width: 100%;
+    min-height: 0;
+    max-height: none;
+    padding: 0.65rem 0.7rem 0.6rem;
   }
 
   .script-title {
@@ -621,14 +681,6 @@ body {
   .tagline {
     font-size: 0.72rem;
     letter-spacing: 0.08em;
-  }
-
-  .dday-panel {
-    flex: 0 0 min(180px, 44vw);
-    width: min(180px, 44vw);
-    min-height: 150px;
-    max-height: 240px;
-    padding: 0.65rem 0.7rem 0.6rem;
   }
 
   .workspace {
@@ -655,6 +707,12 @@ body {
   .quadrant-sub {
     font-size: 0.62rem;
     margin: 0.25rem 0 0.75rem;
+  }
+
+  .progress-badge {
+    width: 38px;
+    height: 38px;
+    font-size: 0.65rem;
   }
 
   .add-input {
