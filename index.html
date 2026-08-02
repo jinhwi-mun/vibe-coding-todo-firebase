@@ -21,93 +21,187 @@
             <p class="tagline">today, next, soon, later</p>
           </div>
 
-          <section class="dday-panel" data-quadrant="dday">
-            <h2 class="dday-title">D-DAY</h2>
-            <ul class="dday-list" aria-label="D-day countdowns"></ul>
-            <form class="dday-form" autocomplete="off">
-              <input
-                type="text"
-                class="dday-text"
-                name="text"
-                placeholder="event…"
-                required
-              />
-              <div class="dday-form-row">
-                <label class="date-field">
-                  <span class="date-placeholder">yyyy-mm-dd</span>
-                  <input type="date" class="dday-date" name="date" required />
-                </label>
-                <button type="submit" class="save-btn dday-save-btn">save</button>
+          <div class="header-widgets">
+            <section class="garden-panel" aria-label="Today goals and plant">
+              <div class="plant-stage" id="plant-stage" data-stage="seed" aria-live="polite">
+                <div class="plant-frame">
+                  <svg class="plant-svg" viewBox="0 0 120 120" aria-hidden="true">
+                    <circle cx="60" cy="60" r="54" class="plant-bg" />
+                    <circle cx="60" cy="60" r="46" class="plant-inner" />
+                    <path class="plant-soil" d="M28 78 Q60 98 92 78 L92 88 Q60 108 28 88 Z" />
+                    <g class="plant-growth" id="plant-growth"></g>
+                  </svg>
+                  <svg class="plant-ring" viewBox="0 0 120 120" aria-hidden="true">
+                    <circle class="plant-ring-track" cx="60" cy="60" r="56" />
+                    <circle class="plant-ring-fill" id="plant-ring-fill" cx="60" cy="60" r="56" />
+                  </svg>
+                </div>
+                <p class="plant-label" id="plant-label">seed</p>
               </div>
-            </form>
-          </section>
+
+              <div class="goals-panel">
+                <h2 class="goals-title">TODAY'S GOALS</h2>
+                <ul class="goals-list" id="goals-list" aria-label="Today goals"></ul>
+                <form class="goals-form" id="goals-form" autocomplete="off">
+                  <input type="text" class="goals-input" placeholder="add a goal…" required />
+                  <button type="submit" class="save-btn">save</button>
+                </form>
+              </div>
+            </section>
+
+            <section class="dday-panel" data-quadrant="dday">
+              <h2 class="dday-title">D-DAY</h2>
+              <ul class="dday-list" aria-label="D-day countdowns"></ul>
+              <form class="dday-form" autocomplete="off">
+                <input
+                  type="text"
+                  class="dday-text"
+                  name="text"
+                  placeholder="event…"
+                  required
+                />
+                <div class="dday-form-row">
+                  <label class="date-field">
+                    <span class="date-placeholder">yyyy-mm-dd</span>
+                    <input type="date" class="dday-date" name="date" required />
+                  </label>
+                  <button type="submit" class="save-btn dday-save-btn">save</button>
+                </div>
+              </form>
+            </section>
+          </div>
         </div>
       </header>
 
-      <div class="matrix">
-        <section class="quadrant" data-quadrant="urgent-important">
-          <h2 class="quadrant-title">TODAY</h2>
-          <p class="quadrant-sub">
-            <span class="word-urgent">urgent</span> &amp;
-            <span class="word-important">important</span>
-          </p>
-          <ul class="task-list" aria-label="Today tasks"></ul>
-          <form class="add-form" autocomplete="off">
-            <button type="submit" class="add-btn" aria-label="Add task">+</button>
-            <input type="text" class="add-input" placeholder="add a task…" />
-            <button type="submit" class="save-btn">save</button>
-          </form>
-        </section>
+      <div class="workspace">
+        <nav class="view-nav" aria-label="Schedule shortcuts">
+          <a class="view-nav-link" href="month.html">monthly</a>
+          <a class="view-nav-link" href="week.html">weekly</a>
+          <a class="view-nav-link" href="day.html">daily</a>
+        </nav>
 
-        <section class="quadrant" data-quadrant="important-not-urgent">
-          <h2 class="quadrant-title">NEXT</h2>
-          <p class="quadrant-sub">
-            <span class="word-important">important</span>
-          </p>
-          <ul class="task-list" aria-label="Next tasks"></ul>
-          <form class="add-form" autocomplete="off">
-            <button type="submit" class="add-btn" aria-label="Add task">+</button>
-            <input type="text" class="add-input" placeholder="add a task…" />
-            <button type="submit" class="save-btn">save</button>
-          </form>
-        </section>
+        <div class="matrix">
+          <section class="quadrant" data-quadrant="urgent-important">
+            <div class="quadrant-head">
+              <div class="quadrant-head-text">
+                <h2 class="quadrant-title">TODAY</h2>
+                <p class="quadrant-sub">
+                  <span class="word-urgent">urgent</span> &amp;
+                  <span class="word-important">important</span>
+                </p>
+              </div>
+              <button type="button" class="progress-badge" data-progress-for="urgent-important" aria-label="Today progress">
+                <span class="progress-value">0%</span>
+              </button>
+            </div>
+            <div class="progress-panel" data-progress-panel="urgent-important" hidden>
+              <p class="progress-summary"></p>
+              <ul class="progress-log-list"></ul>
+              <form class="progress-log-form" autocomplete="off">
+                <input type="text" class="progress-log-input" placeholder="log progress…" required />
+                <button type="submit" class="save-btn">save</button>
+              </form>
+            </div>
+            <ul class="task-list" aria-label="Today tasks"></ul>
+            <form class="add-form" autocomplete="off">
+              <button type="submit" class="add-btn" aria-label="Add task">+</button>
+              <input type="text" class="add-input" placeholder="add a task…" />
+              <button type="submit" class="save-btn">save</button>
+            </form>
+          </section>
 
-        <section class="quadrant" data-quadrant="urgent-not-important">
-          <h2 class="quadrant-title">SOON</h2>
-          <p class="quadrant-sub">
-            <span class="word-urgent">urgent</span> &amp; not
-            <span class="word-important">important</span>
-          </p>
-          <ul class="task-list" aria-label="Soon tasks"></ul>
-          <form class="add-form" autocomplete="off">
-            <button type="submit" class="add-btn" aria-label="Add task">+</button>
-            <input type="text" class="add-input" placeholder="add a task…" />
-            <button type="submit" class="save-btn">save</button>
-          </form>
-        </section>
+          <section class="quadrant" data-quadrant="important-not-urgent">
+            <div class="quadrant-head">
+              <div class="quadrant-head-text">
+                <h2 class="quadrant-title">NEXT</h2>
+                <p class="quadrant-sub">
+                  <span class="word-important">important</span>
+                </p>
+              </div>
+              <button type="button" class="progress-badge" data-progress-for="important-not-urgent" aria-label="Next progress">
+                <span class="progress-value">0%</span>
+              </button>
+            </div>
+            <div class="progress-panel" data-progress-panel="important-not-urgent" hidden>
+              <p class="progress-summary"></p>
+              <ul class="progress-log-list"></ul>
+              <form class="progress-log-form" autocomplete="off">
+                <input type="text" class="progress-log-input" placeholder="log progress…" required />
+                <button type="submit" class="save-btn">save</button>
+              </form>
+            </div>
+            <ul class="task-list" aria-label="Next tasks"></ul>
+            <form class="add-form" autocomplete="off">
+              <button type="submit" class="add-btn" aria-label="Add task">+</button>
+              <input type="text" class="add-input" placeholder="add a task…" />
+              <button type="submit" class="save-btn">save</button>
+            </form>
+          </section>
 
-        <section class="quadrant" data-quadrant="future">
-          <h2 class="quadrant-title">LATER</h2>
-          <p class="quadrant-sub">
-            not <span class="word-urgent">urgent</span> &amp; not
-            <span class="word-important">important</span>
-          </p>
-          <ul class="task-list" aria-label="Later tasks"></ul>
-          <form class="add-form" autocomplete="off">
-            <button type="submit" class="add-btn" aria-label="Add task">+</button>
-            <input type="text" class="add-input" placeholder="add a task…" />
-            <button type="submit" class="save-btn">save</button>
-          </form>
-        </section>
+          <section class="quadrant" data-quadrant="urgent-not-important">
+            <div class="quadrant-head">
+              <div class="quadrant-head-text">
+                <h2 class="quadrant-title">SOON</h2>
+                <p class="quadrant-sub">
+                  <span class="word-urgent">urgent</span> &amp; not
+                  <span class="word-important">important</span>
+                </p>
+              </div>
+              <button type="button" class="progress-badge" data-progress-for="urgent-not-important" aria-label="Soon progress">
+                <span class="progress-value">0%</span>
+              </button>
+            </div>
+            <div class="progress-panel" data-progress-panel="urgent-not-important" hidden>
+              <p class="progress-summary"></p>
+              <ul class="progress-log-list"></ul>
+              <form class="progress-log-form" autocomplete="off">
+                <input type="text" class="progress-log-input" placeholder="log progress…" required />
+                <button type="submit" class="save-btn">save</button>
+              </form>
+            </div>
+            <ul class="task-list" aria-label="Soon tasks"></ul>
+            <form class="add-form" autocomplete="off">
+              <button type="submit" class="add-btn" aria-label="Add task">+</button>
+              <input type="text" class="add-input" placeholder="add a task…" />
+              <button type="submit" class="save-btn">save</button>
+            </form>
+          </section>
+
+          <section class="quadrant" data-quadrant="future">
+            <div class="quadrant-head">
+              <div class="quadrant-head-text">
+                <h2 class="quadrant-title">LATER</h2>
+                <p class="quadrant-sub">
+                  not <span class="word-urgent">urgent</span> &amp; not
+                  <span class="word-important">important</span>
+                </p>
+              </div>
+              <button type="button" class="progress-badge" data-progress-for="future" aria-label="Later progress">
+                <span class="progress-value">0%</span>
+              </button>
+            </div>
+            <div class="progress-panel" data-progress-panel="future" hidden>
+              <p class="progress-summary"></p>
+              <ul class="progress-log-list"></ul>
+              <form class="progress-log-form" autocomplete="off">
+                <input type="text" class="progress-log-input" placeholder="log progress…" required />
+                <button type="submit" class="save-btn">save</button>
+              </form>
+            </div>
+            <ul class="task-list" aria-label="Later tasks"></ul>
+            <form class="add-form" autocomplete="off">
+              <button type="submit" class="add-btn" aria-label="Add task">+</button>
+              <input type="text" class="add-input" placeholder="add a task…" />
+              <button type="submit" class="save-btn">save</button>
+            </form>
+          </section>
+        </div>
       </div>
     </div>
 
     <template id="task-item-template">
-      <li class="task-item">
-        <label class="checkbox-wrap">
-          <input type="checkbox" class="task-check" />
-          <span class="checkbox-box" aria-hidden="true"></span>
-        </label>
+      <li class="task-item" draggable="true">
+        <span class="drag-handle" title="Drag to reorder" aria-hidden="true">⋮⋮</span>
         <span class="task-text" tabindex="0"></span>
         <input type="text" class="task-edit" hidden />
         <div class="task-actions">
@@ -118,7 +212,8 @@
     </template>
 
     <template id="dday-item-template">
-      <li class="dday-item">
+      <li class="dday-item" draggable="true" data-id="">
+        <span class="drag-handle" title="Drag to reorder" aria-hidden="true">⋮⋮</span>
         <div class="dday-item-main">
           <span class="dday-badge"></span>
           <span class="dday-item-text"></span>
@@ -134,6 +229,18 @@
           <button type="button" class="action-btn edit-btn" title="Edit">edit</button>
           <button type="button" class="action-btn delete-btn" title="Delete">delete</button>
         </div>
+      </li>
+    </template>
+
+    <template id="goal-item-template">
+      <li class="goal-item" draggable="true" data-id="">
+        <span class="drag-handle" title="Drag to reorder" aria-hidden="true">⋮⋮</span>
+        <label class="checkbox-wrap">
+          <input type="checkbox" class="goal-check" />
+          <span class="checkbox-box" aria-hidden="true"></span>
+        </label>
+        <span class="goal-text"></span>
+        <button type="button" class="action-btn goal-delete" title="Delete">delete</button>
       </li>
     </template>
 

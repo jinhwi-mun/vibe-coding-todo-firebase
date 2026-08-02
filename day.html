@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>to do · daily</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Outfit:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app app-schedule-page">
+      <header class="page-header">
+        <a class="back-link" href="index.html">← matrix</a>
+        <h1 class="page-title script-title">daily</h1>
+        <nav class="view-nav view-nav-page" aria-label="Schedule shortcuts">
+          <a class="view-nav-link" href="month.html">monthly</a>
+          <a class="view-nav-link" href="week.html">weekly</a>
+          <a class="view-nav-link is-active" href="day.html">daily</a>
+        </nav>
+      </header>
+
+      <section class="schedule schedule-standalone" aria-label="Daily schedule">
+          <div class="schedule-panel is-active" data-panel="day" role="tabpanel">
+            <div class="schedule-toolbar">
+              <button type="button" class="nav-btn" id="day-prev" aria-label="Previous day">‹</button>
+              <h3 class="schedule-heading" id="day-label"></h3>
+              <button type="button" class="nav-btn" id="day-next" aria-label="Next day">›</button>
+            </div>
+            <div class="day-view">
+              <ul class="schedule-list" id="day-list"></ul>
+              <form class="schedule-add-form" data-target="selected" autocomplete="off">
+                <input type="text" class="schedule-input" placeholder="add a detailed task…" required />
+                <textarea class="schedule-note schedule-note-area" placeholder="notes / details (optional)" rows="3"></textarea>
+                <button type="submit" class="save-btn">save</button>
+              </form>
+            </div>
+          </div>
+        </section>
+    </div>
+
+    <template id="schedule-item-template">
+      <li class="schedule-item" draggable="true">
+        <span class="drag-handle" title="Drag to reorder" aria-hidden="true">⋮⋮</span>
+        <label class="checkbox-wrap">
+          <input type="checkbox" class="task-check" />
+          <span class="checkbox-box" aria-hidden="true"></span>
+        </label>
+        <div class="schedule-item-body">
+          <span class="task-text" tabindex="0"></span>
+          <span class="schedule-item-note"></span>
+          <div class="schedule-item-edit" hidden>
+            <input type="text" class="task-edit schedule-edit-text" />
+            <textarea class="schedule-edit-note" rows="2" placeholder="details…"></textarea>
+          </div>
+        </div>
+        <div class="task-actions">
+          <button type="button" class="action-btn edit-btn" title="Edit">edit</button>
+          <button type="button" class="action-btn delete-btn" title="Delete">delete</button>
+        </div>
+      </li>
+    </template>
+
+    <script type="module" src="schedule-page.js"></script>
+  </body>
+</html>

@@ -3,6 +3,18 @@
     "tasks": {
       ".read": true,
       ".write": true
+    },
+    "scheduled": {
+      ".read": true,
+      ".write": true
+    },
+    "progressLogs": {
+      ".read": true,
+      ".write": true
+    },
+    "dailyGoals": {
+      ".read": true,
+      ".write": true
     }
   }
 }
