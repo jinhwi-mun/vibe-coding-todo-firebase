@@ -217,14 +217,25 @@ function createTaskElement(quadrantId, task) {
   const node = template.content.firstElementChild.cloneNode(true);
   node.dataset.taskId = task.id;
 
+  const check = node.querySelector(".task-check");
   const textEl = node.querySelector(".task-text");
   const editInput = node.querySelector(".task-edit");
   const editBtn = node.querySelector(".edit-btn");
   const deleteBtn = node.querySelector(".delete-btn");
 
+  check.checked = task.done;
   textEl.textContent = task.text;
   editInput.value = task.text;
   node.classList.toggle("is-done", task.done);
+
+  check.addEventListener("change", async () => {
+    try {
+      await updateTask(quadrantId, task.id, { done: check.checked });
+    } catch (err) {
+      check.checked = !check.checked;
+      reportFirebaseError(err);
+    }
+  });
 
   editBtn.addEventListener("click", () => startEdit(node, task, editInput));
   textEl.addEventListener("dblclick", () => startEdit(node, task, editInput));

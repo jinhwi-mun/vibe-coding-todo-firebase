@@ -202,6 +202,10 @@
     <template id="task-item-template">
       <li class="task-item" draggable="true">
         <span class="drag-handle" title="Drag to reorder" aria-hidden="true">⋮⋮</span>
+        <label class="checkbox-wrap">
+          <input type="checkbox" class="task-check" />
+          <span class="checkbox-box" aria-hidden="true"></span>
+        </label>
         <span class="task-text" tabindex="0"></span>
         <input type="text" class="task-edit" hidden />
         <div class="task-actions">
